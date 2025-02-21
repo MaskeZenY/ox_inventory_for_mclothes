@@ -1,0 +1,770 @@
+$mainColor: #22232c;
+$textColor: #c1c2c5;
+$mainFont: Roboto;
+
+$secondaryColor: rgba(12, 12, 12, 0.4);
+$secondaryColorHighlight: #33343F;
+$secondaryColorLight: rgba(0, 0, 0, 0.5);
+$secondaryColorDark: rgba(12, 12, 12, 0.8);
+
+$gridCols: 5;
+$gridRows: 5;
+$gridSize: 10.2vh;
+$gridGap: 2px;
+$containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: none !important;
+  overflow: hidden !important;
+  user-select: none;
+}
+
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-family: $mainFont;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.app-wrapper {
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.context-menu-list {
+  min-width: 100px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, .6);
+  border-radius: 3px;
+  outline: 0;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+
+.context-menu-item {
+  height: 40px;
+  width: 170px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, .6);
+  outline: 0;
+  border: 0;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px transparent;
+}
+
+.context-menu-item:active {
+  transform: none;
+}
+
+.context-menu-item:hover {
+  border: solid 1px rgba(200, 200, 200);
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(3px);
+}
+
+.tooltip-description {
+  padding-top: 5px;
+}
+
+.tooltip-markdown > p {
+  margin: 0;
+}
+
+button:active {
+  transform: translateY(3px);
+}
+
+.item-drag-preview {
+  width: 7.7vh;
+  height: 7.7vh;
+  z-index: 1;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 7vh;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.inventory-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  gap: 100px;
+
+  @media screen and (min-width: 2560px) {
+    gap: 200px;
+  }
+}
+
+.inventory-control {
+  display: flex;
+  position: relative;
+  top: 45vh;
+
+  .inventory-control-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inventory-control-input {
+    transition: 200ms;
+    padding: 16px 8px;
+    border-radius: 2.5%;
+    font-family: $mainFont;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: $secondaryColor;
+    &:focus-within {
+      background-color: $secondaryColorDark;
+    }
+  }
+
+  .inventory-control-button {
+    font-size: 14px;
+    color: #fff;
+    background-color: $secondaryColor;
+    transition: 200ms;
+    padding: 16px 45px;
+    border-radius: 2.5%;
+    border: none;
+    text-transform: uppercase;
+    font-family: $mainFont;
+    width: 100%;
+    font-weight: 500;
+    &:hover {
+      background-color: $secondaryColorDark;
+    }
+  }
+
+  .inventory-control-button2 {
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(12, 12, 12, 0.4);
+    transition: 200ms;
+    padding: 16px 45px;
+    border-radius: 2.5%;
+    border: none;
+    text-transform: uppercase;
+    font-family: Roboto;
+    width: 68%;
+    height: 76.4vh;
+    font-weight: 500;
+    position: absolute;
+    top: -78.1vh;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  @media screen and (min-width: 2560px) {
+    .inventory-control-button2 {
+      font-size: 14px;
+      color: #fff;
+      background-color: rgba(12, 12, 12, 0.4);
+      transition: 200ms;
+      padding: 16px 45px;
+      border-radius: 2.5%;
+      border: none;
+      text-transform: uppercase;
+      font-family: Roboto;
+      width: 110%;
+      height: 76.4vh;
+      font-weight: 500;
+      position: absolute;
+      top: -78.1vh;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+  }
+
+  .inventory-control-button2:hover {
+    opacity: 1;
+  }
+}
+
+.useful-controls-dialog {
+  background-color: $mainColor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $textColor;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 4px;
+  gap: 16px;
+}
+
+.useful-controls-dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.useful-controls-dialog-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.useful-controls-dialog-close {
+  width: 25px;
+  height: 25px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  fill: $textColor;
+  &:hover {
+    background-color: $secondaryColorHighlight;
+    cursor: pointer;
+  }
+}
+
+.useful-controls-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.useful-controls-button {
+  visibility: hidden;
+  position: absolute !important;
+  bottom: 25px;
+  right: 25px;
+  transition: 200ms !important;
+  border: none;
+  color: white;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: white;
+  border-radius: 5% !important;
+  background-color: $secondaryColor !important;
+  &:hover {
+    background-color: $secondaryColorDark !important;
+    cursor: pointer;
+  }
+}
+
+.useful-controls-exit-button {
+  position: absolute !important;
+  right: 8px;
+  top: 8px;
+  border-radius: 2.5% !important;
+  color: grey !important;
+}
+
+// Dialog is used fro useful controls window
+
+
+// inventory grids
+.inventory-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: calc($gridGap * 2);
+}
+.inventory-grid-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  p {
+    font-size: 16px;
+  }
+}
+
+.inventory-grid-container {
+  display: grid;
+  height: calc(63.2vh + 96px);
+  grid-template-columns: repeat(5, 95px);
+  grid-auto-rows: 95px;
+  gap: 10px;
+  overflow-y: scroll;
+
+  .inventory-slot {
+    border-radius: 0;
+  }
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat($gridCols, $gridSize);
+  grid-template-rows: repeat($gridRows, $gridSize);
+  gap: $gridGap;
+  width: fit-content;
+  height: fit-content;
+  
+}
+
+// inventory slots
+.inventory-slot {
+  background-color: rgba($secondaryColor, 0.5);
+  border-radius: 0;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  background-size: 7vh;
+  color: $textColor;
+}
+
+.inventory-slot-label-box {
+  background-color: #00000060;
+  color: #ffffff;
+  text-align: center;
+  font-variant: normal;
+  /* Pour annuler la mise en majuscule */
+  /*flex-grow: 1; /* Pour que la boîte s'agrandisse si nécessaire */
+  /*word-wrap: break-word; /* Pour faire revenir le texte à la ligne */
+  /*min-height: 10px; /* Hauteur minimale */
+  /*max-width: 100%; /* Largeur maximale */
+}
+
+.inventory-slot-label-box-no {
+  display: none;
+}
+
+
+.inventory-slot-label-text {
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2px 3px;
+  font-weight: 400;
+  font-family: $mainFont;
+  font-size: 12px;
+}
+
+.inventory-slot-number {
+  background-color: #000f92;
+  color: #fff;
+  height: 15px;
+  width: 15px;
+  padding: 4px;
+  font-size: 12px;
+  left: 72px;
+  text-align: center;
+  top: 0;
+  position: absolute;
+}
+
+.inventory-slot-number::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -72px;
+  width: 415%;
+  height: 3px;
+  background-color: #000f92;
+}
+
+.item-slot-wrapper {
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
+.item-slot-wrapper p {
+  font-size: 8px;
+}
+
+
+.item-slot-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.item-hotslot-header-wrapper {
+  @extend .item-slot-header-wrapper;
+  justify-content: space-between !important;
+}
+
+.item-slot-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  padding: 3px;
+  gap: 3px;
+  p {
+    font-size: 12px;
+  }
+}
+
+.item-slot-currency-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 3px;
+  p {
+    font-size: 14px;
+    text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
+  }
+}
+
+.item-slot-price-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 3px;
+  p {
+    font-size: 14px;
+    text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+.tooltip-wrapper {
+  pointer-events: none;
+  display: flex;
+  background-color: rgba(31, 31, 31, 0.774);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 200px;
+  padding: 8px;
+  flex-direction: column;
+  min-width: 200px;
+  color: $textColor;
+  font-family: $mainFont;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: inset;
+  border-width: 1px;
+  p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+.tooltip-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+.tooltip-crafting-duration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  svg {
+    padding-right: 3px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.tooltip-ingredients {
+  padding-top: 5px;
+}
+
+.tooltip-ingredient {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    width: 28px;
+    height: 28px;
+    padding-right: 5px;
+  }
+}
+
+// hotbar
+.hotbar-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 2vh;
+}
+
+.hotbar-item-slot {
+  @extend .inventory-slot;
+  width: $gridSize;
+  height: $gridSize;
+}
+
+.hotbar-slot-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// item notifications
+
+.item-notification-container {
+  display: flex;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  gap: 2px;
+  position: absolute;
+  bottom: 20vh;
+  left: 50%;
+  width: 100%;
+  margin-left: calc(50% - calc($gridSize/2));
+  transform: translate(-50%);
+}
+
+.item-notification-action-box {
+  width: 100%;
+  color: $textColor;
+  background-color: $secondaryColor;
+  text-transform: uppercase;
+  text-align: center;
+  border-top-left-radius: 0.25vh;
+  border-top-right-radius: 0.25vh;
+  font-family: $mainFont;
+  p {
+    font-size: 11px;
+    padding: 2px;
+    font-weight: 600;
+  }
+}
+
+.item-notification-item-box {
+  @extend .inventory-slot;
+  height: $gridSize;
+  width: $gridSize;
+}
+
+.durability-bar {
+  background: rgba(0, 0, 0, 0.5);
+  height: 3px;
+  overflow: hidden;
+}
+
+.weight-bar {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px inset rgba(0, 0, 0, 0.1);
+  height: 0.8vh;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.weight-bar-circular {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  svg {
+    transform: rotate(-90deg);
+    circle {
+      transition: stroke-dashoffset 0.3s ease;
+    }
+  }
+}
+
+.transition-fade-enter {
+  opacity: 0;
+}
+
+.transition-fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.transition-fade-exit {
+  opacity: 1;
+}
+
+.transition-fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.transition-slide-up-enter {
+  transform: translateY(200px)
+}
+
+.transition-slide-up-enter-active {
+  transform: translateY(0px);
+  transition: all 200ms;
+}
+
+.transition-slide-up-exit {
+  transform: translateY(0px);
+}
+
+.transition-slide-up-exit-active {
+  transform: translateY(200px);
+  transition: all 200ms;
+}
+
+.inventory-grid-bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 39vh;
+  position: fixed;
+  bottom: 8.6vh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.inventory-grid-bottom-column {
+  display: grid;
+  grid-template-columns: 8.16vh;
+  grid-template-rows: repeat(8, 9.4vh);
+  gap: calc($gridGap * 0.8);
+
+  .inventory-slot {
+    background-color: #00000060;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 4.0vh;
+    image-rendering: crisp-edges;
+    position: relative;
+    color: #ffffff;
+    border-radius: 1%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease, border-color .3s ease, color .3s ease;
+    
+    .inventory-slot-label-text {
+      font-size: 10px;
+    }
+    
+    .item-slot-info-wrapper p {
+      font-size: 10px;
+    }
+    
+    .inventory-slot-number {
+      font-size: 10px;
+      padding: 2px;
+    }
+
+    border-radius: 0;
+  }
+}
+
+// Styles pour les slots de vêtements
+@for $i from 30 through 46 {
+  .clothing-slot-#{$i} {
+    background-image: url('/images/#{$i}.svg') !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.3;
+  }
+}
+
+.weight-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px; /* Réduction de la taille du bouton */
+  font-size: 12px;
+  font-family: $mainFont;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: $textColor;
+  background-color: $secondaryColor;
+  border: 1px solid transparent;
+  border-radius: 4px; /* Coins moins arrondis */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.button img {
+  width: 24px; /* Réduction de la taille de l'image */
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: rgba(59, 59, 59, 0.3);
+  border-color: rgba(200, 200, 200, 0.3);
+}
+
+.button:active {
+  transform: translateY(1px);
+  opacity: 0.8;
+}
+
+.button:active img {
+  transform: scale(0.9);
+}
+
+.flex-container {
+  display: flex; /* Active le flexbox */
+  gap: 8px; /* Équivalent de gap-2 (8px) */
+  margin-top: -20px; /* Équivalent de mt-2 (8px) */
+}
