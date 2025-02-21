@@ -2,6 +2,9 @@
 
 This is a modified version of the original ox_inventory with additional features and improvements. This fork adds more functionality while maintaining the core features of the original inventory system.
 
+![image](https://github.com/user-attachments/assets/2076be6e-dfd4-4c10-a98b-fb51c8626faa)
+
+
 ## ✨ New Features
 
 - **Extended Slot System**
