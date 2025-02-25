@@ -1,4 +1,173 @@
 return {
+
+	['cloth_outfit'] = {
+		label = 'Tenue',
+		weight = 1,
+		stack = false, 
+		close = false,
+	},
+	['cloth_torso'] = {
+		label = 'Veste',
+		weight = 0.50,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_tshirt'] = {
+		label = 'T-Shirt',
+		weight = 0.20,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_arms'] = {
+		label = 'Bras',
+		weight = 0,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_pants'] = {
+		label = 'Pantalon',
+		weight = 0.40,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_shoes'] = {
+		label = 'Chaussures',
+		weight = 0.80,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_decals'] = {
+		label = 'Calques',
+		weight = 0,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_ears'] = {
+		label = "Boucle d'Oreilles",
+		weight = 0.01,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_mask'] = {
+		label = 'Masque',
+		weight = 0.01,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_bproof'] = {
+		label = 'Gilet Par Balle',
+		weight = 0.8,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_chain'] = {
+		label = 'Collier',
+		weight = 0.03,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_bags'] = {
+		label = 'Sac',
+		weight = 0.5,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_glasses'] = {
+		label = 'Lunettes',
+		weight = 0.01,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_watches'] = {
+		label = 'Montre',
+		weight = 0.01,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_bracelets'] = {
+		label = 'Bracelet',
+		weight = 0.01,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+	['cloth_helmet'] = {
+		label = 'Chapeaux',
+		weight = 0.05,
+		stack = false,
+		close = false,
+		consume = 0,
+		client = {
+			export = 'MClothes.clothes'
+		},
+	},
+    ['clothes'] = {
+    	label = 'Vêtements',
+    	weight = 1,
+    	stack = false,
+    	close = true,
+    	consume = 0,
+    	client = {
+    		anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
+    		usetime = 2500,
+    		export = 'MClothes.useClothes'
+    	}
+    }, 
 	['testburger'] = {
 		label = 'Test Burger',
 		weight = 220,

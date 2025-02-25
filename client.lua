@@ -309,6 +309,11 @@ function client.openInventory(inv, data)
         end)
     end
 
+	SendNUIMessage({
+        action = "setSlotsClothes",
+        data = shared.slotsclothes
+    })
+
 	Citizen.CreateThread(function()
 		exports['MClothes']:PedScreenCreate({
 			dict = "anim@amb@nightclub@peds@", 

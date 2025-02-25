@@ -16,6 +16,7 @@ import Fade from '../utils/transitions/Fade';
 
 const Inventory: React.FC = () => {
   const [inventoryVisible, setInventoryVisible] = useState(false);
+  const [slotsClothes, setSlotsClothes] = useState<string | null>(null);
   const dispatch = useAppDispatch();
 
   useNuiEvent<boolean>('setInventoryVisible', setInventoryVisible);
@@ -40,13 +41,19 @@ const Inventory: React.FC = () => {
     dispatch(setAdditionalMetadata(data));
   });
 
+  useNuiEvent('setSlotsClothes', (data: string) => {
+    setSlotsClothes(data);
+  });
+
   return (
     <>
       <Fade in={inventoryVisible}>
         <div className="inventory-wrapper">
-          <LeftInventory />
-          <InventoryControl />
+          {slotsClothes === 'left' && <InventoryControl />}
+          <LeftInventory slotsClothes={slotsClothes || ''} />
+          {slotsClothes === 'middle' && <InventoryControl />}
           <RightInventory />
+          {slotsClothes === 'right' && <InventoryControl />}
           <Tooltip />
           <InventoryContext />
         </div>

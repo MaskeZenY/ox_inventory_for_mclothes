@@ -6,10 +6,11 @@ import { getTotalWeight } from '../../helpers';
 import { useAppSelector } from '../../store';
 import { useIntersection } from '../../hooks/useIntersection';
 import { imagepath } from '../../store/imagepath';
+import { useNuiEvent } from '../../hooks/useNuiEvent';
 
 const PAGE_SIZE = 30;
 
-const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
+const InventoryGrid: React.FC<{ inventory: Inventory, slotsClothes: string }> = ({ inventory, slotsClothes }) => {
   const weight = useMemo(
     () => (inventory.maxWeight !== undefined ? Math.floor(getTotalWeight(inventory.items) * 1000) / 1000 : 0),
     [inventory.maxWeight, inventory.items]
@@ -18,6 +19,7 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
   const [page, setPage] = useState(0);
   const [filterCloth, setFilterCloth] = useState(false);
   const [filterWeapon, setFilterWeapon] = useState(false);
+
 
   const containerRef = useRef(null);
   const { ref, entry } = useIntersection({ threshold: 0.5 });
@@ -83,7 +85,9 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
         </div>
 
         {/* Slots pour les vêtements (les 16 derniers items) */}
-        <div className="inventory-grid-bottom">
+        <div className="inventory-grid-bottom" style={{
+          left: slotsClothes === 'left' ? '18.2%' : slotsClothes === 'right' ? '82.2%' : '50%',
+        }}>
           <div className="inventory-grid-bottom-column">
             {lastItems.slice(0, 8).map((item) => (
               <InventorySlot

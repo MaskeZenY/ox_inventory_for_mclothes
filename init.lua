@@ -15,12 +15,19 @@ end
 shared = {
     resource = GetCurrentResourceName(),
     framework = GetConvar('inventory:framework', 'esx'),
-    playerslots = GetConvarInt('inventory:slots', 50),
+    playerslots = GetConvarInt('inventory:slots', 60),
     playerweight = GetConvarInt('inventory:weight', 30000),
     target = GetConvarInt('inventory:target', 0) == 1,
     police = json.decode(GetConvar('inventory:police', '["police", "sheriff"]')),
     networkdumpsters = GetConvarInt('inventory:networkdumpsters', 0) == 1
 }
+
+
+shared.slotsclothes = "middle" -- right, left, middle
+
+exports('getslotsclothes', function()
+    return shared.slotsclothes
+end)
 
 shared.dropslots = GetConvarInt('inventory:dropslots', shared.playerslots)
 shared.dropweight = GetConvarInt('inventory:dropslotcount', shared.playerweight)
