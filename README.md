@@ -2,6 +2,12 @@
 
 This is a modified version of the original ox_inventory with additional features and improvements. This fork adds more functionality while maintaining the core features of the original inventory system.
 
+<<<<<<< HEAD
+=======
+![image](https://github.com/user-attachments/assets/2076be6e-dfd4-4c10-a98b-fb51c8626faa)
+
+
+>>>>>>> 5b0a97f938a319d97d72cac6b1245bc315762f9e
 ## ✨ New Features
 
 - **Extended Slot System**
@@ -30,7 +36,11 @@ This is a modified version of the original ox_inventory with additional features
 
 - ox_lib
 - MClothes (Required for clothing functionality)
+<<<<<<< HEAD
 - ESX/QBCore (depending on your framework)
+=======
+- ESX
+>>>>>>> 5b0a97f938a319d97d72cac6b1245bc315762f9e
 
 ## 📥 Installation
 
@@ -79,8 +89,11 @@ Check the repository regularly for updates and new features.
 ## 📝 Credits
 
 - Original ox_inventory developers
+<<<<<<< HEAD
 - MClothes team for clothing compatibility
 - Community contributors
+=======
+>>>>>>> 5b0a97f938a319d97d72cac6b1245bc315762f9e
 
 ## 📄 License
 
